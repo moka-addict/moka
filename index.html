@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome • MOKA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="bg-orb one" aria-hidden="true"></div>
+  <div class="bg-orb two" aria-hidden="true"></div>
+  <div class="bg-orb three" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section class="card" aria-label="Welcome">
+      <h1>Welcome to MOKA</h1>
+
+
+      <!-- Clickable logo (no surrounding tile background) -->
+      <a class="logo-link" href="category.html" data-tap aria-label="Continue to categories">
+        <img class="logo" src="Images/image_name.jpg" alt="MOKA logo" />
+        <div class="hint">Click / Tap to continue</div>
+      </a>
+
+      <div class="footer">© <span id="year"></span> MOKA</div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
