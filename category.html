@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOKA Coffee & Food Addict - Categories</title>
+  <style>
+    :root{
+      --bg:#0f0f12;
+      --card:#17171c;
+      --card2:#1f1f26;
+      --text:#eaeaea;
+      --muted:rgba(234,234,234,.65);
+      --shadow:0 14px 40px rgba(0,0,0,.55);
+      --radius:22px;
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* Mobile-first container */
+    .wrap{
+      width: min(680px, 94vw);
+      margin: 16px auto 34px;
+    }
+
+    /* Header: stacked on small screens */
+    .header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px;
+      border-radius:var(--radius);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      margin-bottom:14px;
+    }
+
+    .header img{
+      width:56px;
+      height:56px;
+      border-radius:16px;
+      object-fit:cover;
+      flex:0 0 auto;
+    }
+
+    .title h1{
+      margin:0;
+      font-size:1.15rem;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+
+    .title p{
+      margin:6px 0 0;
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    /* Tiles: full-width big tap targets */
+    .tiles{
+      display:grid;
+      gap:12px;
+    }
+
+    .tile{
+      display:grid;
+      grid-template-columns: 108px 1fr;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+      background:var(--card);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:96px;
+      transition: transform .16s ease, background .16s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* better for phone tapping */
+    .tile:active{
+      transform: scale(.99);
+      background:var(--card2);
+    }
+
+    .tile img{
+      width:108px;
+      height:96px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .tile .text{
+      padding: 10px 12px 10px 0;
+      display:grid;
+      gap:6px;
+    }
+
+    .label{
+      font-size:1.02rem;
+      font-weight:700;
+      line-height:1.15;
+    }
+
+    .sub{
+      font-size:.9rem;
+      color:var(--muted);
+      line-height:1.25;
+    }
+
+    /* Slightly larger layout on bigger screens */
+    @media (min-width: 560px){
+      .tile{
+        grid-template-columns: 140px 1fr;
+        min-height:110px;
+      }
+      .tile img{
+        width:140px;
+        height:110px;
+      }
+      .title h1{
+        font-size:1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="header">
+      <img src="Images/image_logo.jpg" alt="MOKA logo">
+      <div class="title">
+        <h1>MOKA Coffee &amp; Food Addict</h1>
+        <p>Tap a section to continue</p>
+      </div>
+    </div>
+
+    <div class="tiles">
+
+      <a class="tile" href="menu.html">
+        <img src="Images/image1.jpg" alt="Menu">
+        <div class="text">
+          <div class="label">Menu</div>
+          <div class="sub">Drinks &amp; food selection</div>
+        </div>
+      </a>
+
+      <a class="tile" href="hours.html">
+        <img src="Images/image2.jpg" alt="Hours">
+        <div class="text">
+          <div class="label">Hours</div>
+          <div class="sub">Opening times</div>
+        </div>
+      </a>
+
+      <a class="tile" href="location.html">
+        <img src="Images/image3.jpg" alt="Location">
+        <div class="text">
+          <div class="label">Location</div>
+          <div class="sub">Find us on the map</div>
+        </div>
+      </a>
+
+      <a class="tile" href="story.html">
+        <img src="Images/image4.jpg" alt="About / Our Story">
+        <div class="text">
+          <div class="label">About / Our Story</div>
+          <div class="sub">Learn about MOKA</div>
+        </div>
+      </a>
+
+      <a class="tile" href="contact.html">
+        <img src="Images/image5.jpg" alt="Contact / Reservations / Order Online">
+        <div class="text">
+          <div class="label">Contact / Reservations / Order Online 📞</div>
+          <div class="sub">Call, message, reserve, or order</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</body>
+</html>
