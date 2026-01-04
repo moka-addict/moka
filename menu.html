@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu • MOKA</title>
+
+  <style>
+    :root{
+      --text: rgba(255,255,255,.92);
+      --shadow: 0 16px 45px rgba(0,0,0,.75);
+      --radius: 20px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+
+    body{
+      margin: 0;
+      background: #000;
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      display: grid;
+      place-items: center;
+    }
+
+    .wrap{
+      width: 100%;
+      max-width: 920px;
+      padding: 28px 16px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Back button */
+    .back-btn{
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.08);
+      transition: transform .18s ease, background .18s ease;
+      font-size: 14px;
+    }
+
+    .back-btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.12);
+    }
+
+    h1{
+      margin: 0 0 22px;
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: .04em;
+    }
+
+    /* Tiles container */
+    .list-tiles{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Image tiles (same style as category.html) */
+    .img-tile{
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: clamp(120px, 16vw, 160px);
+      border-radius: var(--radius);
+      overflow: hidden;
+
+      background-image: var(--bg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: #fff;
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .img-tile::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.78),
+        rgba(0,0,0,.45) 55%,
+        rgba(0,0,0,.78)
+      );
+    }
+
+    .img-tile-title{
+      position: relative;
+      z-index: 1;
+      font-size: clamp(26px, 4vw, 32px);
+      font-weight: 850;
+      letter-spacing: .02em;
+      text-shadow: 0 10px 24px rgba(0,0,0,.9);
+      transition: transform .18s ease;
+    }
+
+    .img-tile:hover{
+      transform: translateY(-3px);
+      filter: brightness(1.08);
+    }
+
+    .img-tile:hover .img-tile-title{
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <a class="back-btn" href="category.html">Back</a>
+
+    <h1>Menu</h1>
+
+    <div class="list-tiles">
+      <a class="img-tile" href="drinks.html" style="--bg:url('Images/image_drinks.jpg');">
+        <div class="img-tile-title">Drinks</div>
+      </a>
+
+      <a class="img-tile" href="food.html" style="--bg:url('Images/image_food.jpg');">
+        <div class="img-tile-title">Food</div>
+      </a>
+    </div>
+
+  </main>
+
+
+
+
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAWrRbmd1P5Xr015BuP-Z-uHOfPRpxSRyI",
+    authDomain: "akmu-akka.firebaseapp.com",
+    projectId: "akmu-akka",
+    storageBucket: "akmu-akka.firebasestorage.app",
+    messagingSenderId: "570363675866",
+    appId: "1:570363675866:web:9598fb7fa0014d0ce711e3",
+    measurementId: "G-MNRDT6LWL7"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  logEvent(analytics, "page_view", {
+    page_path: location.pathname,
+    page_title: document.title
+  });
+</script>
+
+
+
+</body>
+</html>
