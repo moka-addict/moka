@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drinks • MOKA</title>
+
+  <style>
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+
+    body{
+      margin: 0;
+      background: #000;
+      color: rgba(255,255,255,.92);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      display: grid;
+      place-items: center;
+    }
+
+    .wrap{
+      width: 100%;
+      max-width: 900px;
+      padding: 32px 16px;
+      position: relative;
+      text-align: center;
+    }
+
+    /* Back button (top-right) */
+    .back-btn{
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.08);
+      transition: transform .18s ease, background .18s ease;
+      font-size: 14px;
+    }
+    .back-btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.12);
+    }
+
+    h1{
+      margin: 0 0 18px;
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: .04em;
+    }
+
+    .hint{
+      margin: 0 0 18px;
+      font-size: 13px;
+      opacity: .6;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* Image “cards” */
+    .menu-stack{
+      display: grid;
+      gap: 16px;
+      margin: 0 auto;
+      max-width: 760px;
+    }
+
+    .menu-card{
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.85);
+      background: rgba(255,255,255,.03);
+    }
+
+    .menu-card img{
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    /* Fullscreen zoom modal */
+    .modal{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      display: none;
+      place-items: center;
+      padding: 18px;
+      z-index: 9999;
+    }
+
+    .modal.open{ display: grid; }
+
+    .modal img{
+      max-width: min(980px, 100%);
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.95);
+      cursor: zoom-out;
+    }
+
+    .close{
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.92);
+      font-size: 14px;
+      border: 0;
+      cursor: pointer;
+      transition: background .18s ease, transform .18s ease;
+    }
+
+    .close:hover{
+      background: rgba(255,255,255,.14);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <a class="back-btn" href="menu.html">Back</a>
+
+    <h1>Drinks</h1>
+ 
+
+    <section class="menu-stack" aria-label="Drinks menu images">
+      <!-- Update filenames if yours are different -->
+      <div class="menu-card">
+        <img src="Images/drinks_menu_1.png" alt="Drinks menu page 1" class="zoomable">
+      </div>
+
+      <div class="menu-card">
+        <img src="Images/drinks_menu_2.png" alt="Drinks menu page 2" class="zoomable">
+      </div>
+    </section>
+  </main>
+
+  <!-- Zoom modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <button class="close" id="closeBtn" aria-label="Close">Close ✕</button>
+    <img id="modalImg" alt="Zoomed menu image">
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementById("closeBtn");
+
+    document.querySelectorAll(".zoomable").forEach(img => {
+      img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    function closeModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal || e.target === modalImg) closeModal();
+    });
+
+    // ESC to close (desktop)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
+</body>
+</html>
