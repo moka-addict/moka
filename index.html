@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome • MOKA</title>
+
+  <style>
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      background:#000;
+      color:#fff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      display:grid;
+      place-items:center;
+    }
+
+    .wrap{
+      text-align:center;
+      padding:32px 16px;
+    }
+
+    /* 🔥 Welcome image */
+    .welcome-img{
+      width: clamp(260px, 60vw, 520px);
+      height: auto;
+      margin-bottom: 24px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .logo-link{
+      display:inline-grid;
+      place-items:center;
+      gap:14px;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .logo{
+      width:clamp(320px,60vw,560px);
+      height:auto;
+      border-radius:24px;
+      box-shadow:0 30px 80px rgba(0,0,0,.9);
+      transition:transform .2s ease, filter .2s ease;
+    }
+
+    .logo-link:hover .logo{
+      transform:scale(1.03);
+      filter:brightness(1.1);
+    }
+
+    .hint{
+      font-size:14px;
+      letter-spacing:.08em;
+      opacity:.7;
+      text-transform:uppercase;
+    }
+
+    .footer{
+      margin-top:28px;
+      font-size:12px;
+      opacity:.5;
+    }
+
+    .is-tapping .logo{
+      transform:scale(.97);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <!-- Welcome image instead of text -->
+    <img
+      class="welcome-img"
+      src="Images/image_welcome.png"
+      alt="Welcome to MOKA"
+    >
+
+    <a class="logo-link" href="category.html" data-tap>
+      <img class="logo" src="Images/image_name.jpg" alt="MOKA logo">
+      <div class="hint">Click / Tap to continue</div>
+    </a>
+
+    <div class="footer">© <span id="year"></span> MOKA</div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll("[data-tap]").forEach(el=>{
+      const on=()=>el.classList.add("is-tapping");
+      const off=()=>el.classList.remove("is-tapping");
+      el.addEventListener("mousedown",on);
+      el.addEventListener("mouseup",off);
+      el.addEventListener("mouseleave",off);
+      el.addEventListener("touchstart",on,{passive:true});
+      el.addEventListener("touchend",off);
+    });
+  </script>
+</body>
+</html>
